@@ -1,0 +1,24 @@
+{
+  "name": "edgeberry-cloud-connector",
+  "version": "0.0.1",
+  "description": "Software to connect applications to cloud platforms",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Edgeberry/Edgeberry-Cloud-Connector.git"
+  },
+  "keywords": [
+    "edgeberry",
+    "cloud",
+    "connector"
+  ],
+  "author": "Sanne 'SpuQ' Santens",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/Edgeberry/Edgeberry-Cloud-Connector/issues"
+  },
+  "homepage": "https://github.com/Edgeberry/Edgeberry-Cloud-Connector#readme"
+}

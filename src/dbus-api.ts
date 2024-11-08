@@ -27,7 +27,7 @@ systemBus.requestName(serviceName,0, (err:string|null, res:number|null)=>{
 
 // Create the service object
 const serviceObject = {
-    Message:(arg:string)=>{
+    SendMessage:(arg:string)=>{
         try{
             console.log("TODO: send to the cloud: "+arg);
             return 'ok';
@@ -42,7 +42,7 @@ const serviceObject = {
 systemBus.exportInterface( serviceObject, objectPath, {
     name: interfaceName,
     methods: {
-        Message:['s','s']
+        SendMessage:['s','s']
     },
     signals: {}
 });

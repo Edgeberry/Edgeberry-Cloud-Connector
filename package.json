@@ -2,9 +2,15 @@
   "name": "edgeberry-cloud-connector",
   "version": "0.0.1",
   "description": "Software to connect applications to cloud platforms",
+  "author": "Sanne 'SpuQ' Santens",
+  "license": "GPL-3.0-only",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "deploy": "bash ./deploy.sh",
+    "dev": "nodemon --watch src src/index.ts",
+    "start": "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,10 +21,18 @@
     "cloud",
     "connector"
   ],
-  "author": "Sanne 'SpuQ' Santens",
-  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/Edgeberry/Edgeberry-Cloud-Connector/issues"
   },
-  "homepage": "https://github.com/Edgeberry/Edgeberry-Cloud-Connector#readme"
+  "homepage": "https://github.com/Edgeberry/Edgeberry-Cloud-Connector#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "nodemon": "^3.1.0",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "dbus-native": "^0.4.0"
+  }
 }

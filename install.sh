@@ -153,7 +153,6 @@ fi
 echo -n -e "\e[0mInstalling dependencies \e[0m"
 npm install --prefix /opt/${APPNAME}/${APPCOMP}
 # > /dev/null 2>&1
-# Check if the last command succeeded
 if [ $? -eq 0 ]; then
     echo -e "\e[0;32m[Success]\e[0m"
 else
@@ -165,7 +164,7 @@ fi
 rm -rf repo.tar.gz
 
 # Install the Edgeberry Cloud Connect systemd service
-echo -e -n '\e[0;32mInstalling systemd service... \e[m'
+echo -e -n '\e[0mInstalling systemd service... \e[m'
 mv -f /opt/${APPNAME}/${APPCOMP}/io.edgeberry.cloudconnect.service /etc/systemd/system/
 systemctl daemon-reload
 if [ $? -eq 0 ]; then
@@ -175,7 +174,7 @@ else
 fi
 
 # Enable the Edgeberry Cloud Connect service to run on boot
-echo -e -n '\e[0;32mEnabling service to run on boot... \e[m'
+echo -e -n '\e[0mEnabling service to run on boot... \e[m'
 systemctl enable io.edgeberry.cloudconnect
 if [ $? -eq 0 ]; then
     echo -e "\e[0;32m[Success]\e[0m"
@@ -184,12 +183,14 @@ else
 fi
 
 # Move the dbus policy to the /etc/dbus-1/system.d directory
-echo -e '\e[0;32mInstalling D-Bus policy... \e[m'
+echo -e -n '\e[0mInstalling D-Bus policy... \e[m'
 mv -f /opt/${APPNAME}/${APPCOMP}/edgeberry-cloud-connect.conf /etc/dbus-1/system.d/
-
-##
-#   Finish installation
-##
+if [ $? -eq 0 ]; then
+    echo -e "\e[0;32m[Success]\e[0m"
+else
+    echo -e "\e[0;33mFailed! Exit.\e[0m";
+    exit 1;
+fi
 
 # Start the application using systemctl
 echo -n -e "\e[0mStarting ${APPNAME} ${APPCOMP} for the first time... \e[0m"

@@ -1,7 +1,7 @@
 [Unit]
 Description=Edgeberry Cloud Connect service
 Documentation=https://github.com/edgeberry
-After=io.edgeberry.Core
+After=io.edgeberry.core.service
 
 [Service]
 WorkingDirectory=/opt/Edgeberry/CloudConnect/

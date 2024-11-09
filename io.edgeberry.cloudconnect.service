@@ -1,6 +1,7 @@
 [Unit]
 Description=Edgeberry Cloud Connect service
 Documentation=https://github.com/edgeberry
+Requires=io.edgeberry.core.service
 After=io.edgeberry.core.service
 
 [Service]

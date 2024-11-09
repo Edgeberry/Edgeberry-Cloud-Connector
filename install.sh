@@ -194,7 +194,7 @@ fi
 
 # Start the application using systemctl
 echo -n -e "\e[0mStarting ${APPNAME} ${APPCOMP} for the first time... \e[0m"
-systemctl start io.edgeberry.core
+systemctl start io.edgeberry.cloudconnect
 # Check if the last command succeeded
 if [ $? -eq 0 ]; then
     echo -e "\e[0;32m[Success]\e[0m"

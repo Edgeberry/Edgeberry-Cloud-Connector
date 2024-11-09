@@ -23,7 +23,7 @@ fi
 
 # Prompt the user if they are sure they want to uninstall
 # the Edgeberry software
-read -r -p "Delete $APPNAME $APPCOMP device software? [y/N]: " response
+read -r -p "Delete $APPNAME $APPCOMP software? [y/N]: " response
 case "$response" in
     [yY])
         ;;

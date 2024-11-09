@@ -46,6 +46,9 @@ stty -echo
 echo ''
 echo ''
 
+# Build the project on the local machine
+npm run build
+
 # Create a directory on the device for copying the project to
 echo -e '\e[0;32mCreating temporary directory for the project... \e[m'
 sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USER}@${HOST} "mkdir ~/temp"
@@ -53,7 +56,7 @@ sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USER}@${HOST} "mkdir ~/
 
 # Copy the relevant project files to the device
 echo -e '\e[0;32mCopying project to device...\e[m'
-sshpass -p ${PASSWORD} scp -r ./src ./package.json ./tsconfig.json ./edgeberry-cloud-connect.conf ./io.edgeberry.cloudconnect.service ${USER}@${HOST}:temp/
+sshpass -p ${PASSWORD} scp -r ./build ./package.json ./edgeberry-cloud-connect.conf ./io.edgeberry.cloudconnect.service ${USER}@${HOST}:temp/
 
 # Install the application on remote device
 sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USER}@${HOST} << EOF 
@@ -75,10 +78,10 @@ sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USER}@${HOST} << EOF
 
     echo -e '\e[0;32mInstalling project dependencies... \e[m'
     cd $APPDIR/
-    npm install --include=dev --verbose
+    npm install --verbose
 
-    echo -e '\e[0;32mBuilding the project... \e[m'
-    npm run build --verbose
+    #echo -e '\e[0;32mBuilding the project... \e[m'
+    #npm run build --verbose
 
     # Move the D-Bus config file to /etc/dbus-1/system.d
     echo -e '\e[0;32mMoving D-Bus config file to /etc/dbus-1/system.d... \e[m'
@@ -89,5 +92,9 @@ sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USER}@${HOST} << EOF
     systemctl restart $SERVICENAME
     
 EOF
+
+# Clean up
+echo -e '\e[0;32mRemoving the build folder... \e[m'
+rm -rf ./build
 
 exit 0;

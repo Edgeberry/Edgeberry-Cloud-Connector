@@ -114,7 +114,7 @@ else
 fi
 # Get the asset download URL from the release info
 echo -n -e "\e[0mGetting the latest ${APPNAME} release download URL \e[0m"
-asset_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | test("Edgeberry-v[0-9]+\\.[0-9]+\\.[0-9]+\\.tar\\.gz")) | .url')
+asset_url=$(echo "$latest_release" | jq -r '.assets[] | select(.name | test("Edgeberry-Cloud-Connector-v[0-9]+\\.[0-9]+\\.[0-9]+\\.tar\\.gz")) | .url')
 # If we have an asset URL, download the tarball
 if [ -n "$asset_url" ]; then
     #echo -e "\e[0;32mURL:\e[0m ${asset_url}";

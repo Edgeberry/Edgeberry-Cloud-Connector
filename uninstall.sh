@@ -51,6 +51,11 @@ echo -n -e "\e[0mDeleting the $APPNAME $APPCOMP systemd service... \e[0m"
 rm  /etc/systemd/system/io.edgeberry.cloudconnect.service
 echo -e "\e[0;32m[Done] \e[0m";
 
+echo -n -e "\e[0mReloading the systemd daemon... \e[0m"
+systemctl daemon-reload
+echo -e "\e[0;32m[Done] \e[0m";
+
 # Done uninstalling
 echo -e "The $APPNAME $APPCOMP software was successfully removed"
+
 exit 0;
